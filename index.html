@@ -1,579 +1,786 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 13th Birthday Hanvi! 🎀✨</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 13th Birthday Hanvitha! 🎀✨</title>
+  
+  <!-- Fonts: Playfair Display, Dancing Script, Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fff0f5;
-            background-image: 
-                radial-gradient(#fbcfe8 1.5px, transparent 1.5px), 
-                radial-gradient(#fbcfe8 1.5px, #fff0f5 1.5px);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            overflow-x: hidden;
-            color: #4a2c3d;
-        }
+  <style>
+    /* ==========================================================================
+       COQUETTE HAND-CRAFTED DESIGN SYSTEM
+       Custom CSS styling created for Hanvitha's 13th Birthday
+       ========================================================================== */
+    :root {
+      --bg-pink: #fff0f5;
+      --soft-pink: #fbcfe8;
+      --coquette-pink: #f472b6;
+      --accent-rose: #db2777;
+      --deep-rose: #831843;
+      --cream: #fffaf0;
+      --lace-border: #fecdd3;
+      --shadow-soft: rgba(219, 39, 119, 0.12);
+      --shadow-vintage: rgba(131, 24, 67, 0.15);
+    }
 
-        .font-serif-title { font-family: 'Playfair Display', serif; }
-        .font-cursive { font-family: 'Great Vibes', cursive; }
-        .font-script { font-family: 'Dancing Script', cursive; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #fdf2f8; }
-        ::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 10px; border: 2px solid #fdf2f8; }
+    body {
+      background-color: var(--bg-pink);
+      background-image: 
+        radial-gradient(#f472b6 0.75px, transparent 0.75px), 
+        radial-gradient(#f472b6 0.75px, #fff0f5 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      font-family: 'Quicksand', sans-serif;
+      color: var(--deep-rose);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 80px;
+    }
 
-        .floating-element {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10;
-            animation: floatUp 8s linear infinite;
-            opacity: 0.8;
-        }
+    /* Floating Bow Background Canvas Effects */
+    .floating-decorations {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-        @keyframes floatUp {
-            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.9; }
-            90% { opacity: 0.9; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
+    .floating-item {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: floatUp 12s infinite linear;
+      opacity: 0.6;
+    }
 
-        .flame {
-            width: 12px;
-            height: 20px;
-            background: linear-gradient(to bottom, #fffae6 0%, #ffaa00 50%, #ff3300 100%);
-            border-radius: 50% 50% 20% 20%;
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px #ffaa00, 0 0 20px #ffaa00;
-            animation: flicker 0.6s infinite alternate;
-            transform-origin: center bottom;
-        }
+    @keyframes floatUp {
+      0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
 
-        @keyframes flicker {
-            0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
-            100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
-        }
+    /* Main Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
 
-        .candle {
-            width: 14px;
-            height: 48px;
-            background: linear-gradient(to right, #fbcfe8, #f472b6, #fbcfe8);
-            border-radius: 4px;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(219, 39, 119, 0.2);
-        }
+    /* Lace Trim Decor Header */
+    .lace-header {
+      width: 100%;
+      height: 18px;
+      background: radial-gradient(circle, transparent, transparent 50%, var(--bg-pink) 50%, var(--bg-pink) 100%),
+                  radial-gradient(circle, var(--coquette-pink), var(--coquette-pink) 50%, transparent 50%, transparent 100%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      margin-bottom: 20px;
+    }
 
-        .candle.blown .flame {
-            display: none;
-        }
+    /* Coquette Hero Banner */
+    .hero-section {
+      text-align: center;
+      padding: 45px 20px 35px;
+      background: rgba(255, 250, 240, 0.85);
+      backdrop-filter: blur(8px);
+      border: 3px dashed var(--coquette-pink);
+      border-radius: 30px;
+      box-shadow: 0 10px 30px var(--shadow-soft);
+      position: relative;
+      margin-bottom: 40px;
+    }
 
-        .candle.blown::after {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 12px;
-            background: rgba(150, 150, 150, 0.5);
-            border-radius: 50%;
-            animation: smoke 1.5s ease-out forwards;
-        }
+    .hero-ribbon {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--accent-rose);
+      margin-bottom: 5px;
+    }
 
-        @keyframes smoke {
-            0% { opacity: 0.8; transform: translateX(-50%) translateY(0) scaleX(1); }
-            100% { opacity: 0; transform: translateX(-100%) translateY(-20px) scaleX(3); }
-        }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: var(--deep-rose);
+      text-shadow: 2px 2px 0px var(--soft-pink);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
 
-        .coquette-border {
-            border: 3px solid #f472b6;
-            outline: 2px dashed #fbcfe8;
-            outline-offset: -8px;
-            box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.2), 0 8px 10px -6px rgba(244, 114, 182, 0.1);
-        }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--accent-rose);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(251, 207, 232, 0.8);
-        }
-    </style>
+    .bow-badge {
+      display: inline-block;
+      margin: 15px 0;
+      font-size: 2.5rem;
+      animation: gentleWiggle 3s infinite ease-in-out;
+    }
+
+    @keyframes gentleWiggle {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
+    /* Audio Player Section */
+    .audio-card {
+      background: var(--cream);
+      border: 2px solid var(--soft-pink);
+      border-radius: 20px;
+      padding: 15px 25px;
+      max-width: 500px;
+      margin: 0 auto 40px;
+      box-shadow: 0 5px 15px var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .audio-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-rose);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    audio {
+      width: 100%;
+      height: 36px;
+      outline: none;
+    }
+
+    .upload-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .btn-upload {
+      border: 1.5px dashed var(--coquette-pink);
+      color: var(--accent-rose);
+      background-color: white;
+      padding: 6px 16px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-upload:hover {
+      background-color: var(--soft-pink);
+      color: var(--deep-rose);
+    }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Gallery Grid */
+    .gallery-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--deep-rose);
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .gallery-title::after {
+      content: '🎀 🎀 🎀';
+      display: block;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    /* Polaroid Card Styling */
+    .polaroid-card {
+      background: #ffffff;
+      padding: 15px 15px 20px 15px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px var(--shadow-vintage);
+      border: 1px solid #f3d2dc;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .polaroid-card:hover {
+      transform: translateY(-8deg) rotate(1deg);
+      box-shadow: 0 15px 30px var(--shadow-soft);
+    }
+
+    /* Decorative Washi Tape on Cards */
+    .washi-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 100px;
+      height: 26px;
+      background: rgba(251, 207, 232, 0.7);
+      border: 1px dashed var(--coquette-pink);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Exact Object-Fit Contain Video Container Fix */
+    .video-frame {
+      width: 100%;
+      height: 280px;
+      background-color: #fdf2f8;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px inset var(--lace-border);
+    }
+
+    /* Fix: Full Video Visibility without cropping */
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 0% cut off - shows full frame */
+      background: #000;
+    }
+
+    .polaroid-caption {
+      margin-top: 15px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-rose);
+    }
+
+    .polaroid-tag {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--coquette-pink);
+      text-align: center;
+      margin-top: 2px;
+      font-weight: 700;
+    }
+
+    /* Interactive 13 Birthday Cake Section */
+    .cake-section {
+      background: var(--cream);
+      border: 3px solid var(--soft-pink);
+      border-radius: 30px;
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 25px var(--shadow-soft);
+      position: relative;
+    }
+
+    .cake-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--deep-rose);
+      margin-bottom: 10px;
+    }
+
+    .cake-instructions {
+      font-size: 0.95rem;
+      color: var(--accent-rose);
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .cake-container {
+      position: relative;
+      width: 280px;
+      margin: 0 auto;
+    }
+
+    /* Candles Row */
+    .candles-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: -10px;
+      position: relative;
+      z-index: 4;
+      flex-wrap: wrap;
+      max-width: 260px;
+      margin: 0 auto -12px auto;
+    }
+
+    .candle {
+      width: 12px;
+      height: 45px;
+      background: linear-gradient(to bottom, #f472b6, #fb7185);
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .flame {
+      width: 12px;
+      height: 18px;
+      background: #ffb703;
+      border-radius: 50% 50% 20% 20%;
+      position: absolute;
+      top: -16px;
+      left: 0;
+      box-shadow: 0 0 10px #ffb703, 0 0 20px #fb8500;
+      animation: flicker 0.6s infinite alternate;
+      transition: opacity 0.3s ease;
+    }
+
+    .candle.extinguished .flame {
+      opacity: 0;
+    }
+
+    .smoke {
+      position: absolute;
+      top: -20px;
+      left: 3px;
+      width: 6px;
+      height: 6px;
+      background: rgba(150, 150, 150, 0.5);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .candle.extinguished .smoke {
+      animation: smokeRise 1s ease-out forwards;
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-2deg); }
+      100% { transform: scale(1.1) rotate(2deg); }
+    }
+
+    @keyframes smokeRise {
+      0% { opacity: 0.8; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-25px) scale(2.5); }
+    }
+
+    .cake-body {
+      width: 240px;
+      height: 110px;
+      background: linear-gradient(to bottom, #fbcfe8, #f472b6);
+      margin: 0 auto;
+      border-radius: 20px 20px 10px 10px;
+      position: relative;
+      border: 3px solid #f472b6;
+      box-shadow: 0 8px 0 #db2777;
+    }
+
+    .cake-icing {
+      width: 100%;
+      height: 35px;
+      background: #fff;
+      border-radius: 20px 20px 15px 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .cake-icing::after {
+      content: '🌸 🍓 🌸 🍓 🌸';
+      display: block;
+      font-size: 0.9rem;
+      padding-top: 6px;
+      letter-spacing: 8px;
+    }
+
+    .btn-blow {
+      margin-top: 30px;
+      background-color: var(--accent-rose);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px var(--shadow-soft);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-blow:hover {
+      background-color: var(--deep-rose);
+      transform: scale(1.05);
+    }
+
+    /* Modal Video Previewer */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(131, 24, 67, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: var(--cream);
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 700px;
+      width: 100%;
+      position: relative;
+      border: 3px solid var(--coquette-pink);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 38px;
+      height: 38px;
+      background: var(--accent-rose);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: 2px solid white;
+    }
+
+    .modal-video-container {
+      width: 100%;
+      max-height: 70vh;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-video-container video {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain; /* Full video visible */
+    }
+
+    .modal-caption {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--accent-rose);
+      margin-top: 15px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--accent-rose);
+      font-weight: 600;
+      padding: 20px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.3rem; }
+      .video-grid { grid-template-columns: 1fr; }
+      .video-frame { height: 320px; }
+    }
+  </style>
 </head>
-<body class="min-h-screen relative pb-16">
+<body>
 
-    <!-- Floating Background Particles -->
-    <div id="floating-container"></div>
+  <!-- Floating Background Elements -->
+  <div class="floating-decorations" id="floatingContainer"></div>
 
-    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-pink-200 px-4 py-3 shadow-sm">
-        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl animate-pulse">🎀</span>
-                <span class="font-serif-title font-bold text-xl text-pink-600 tracking-wide">Hanvitha's 13th</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <button onclick="toggleModal('letter-modal')" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition border border-pink-300 flex items-center gap-1.5">
-                    <i class="fa-solid fa-envelope-open-text"></i>
-                    <span>Secret Letter</span>
-                </button>
-                <button onclick="toggleModal('naming-modal')" class="bg-pink-500 hover:bg-pink-600 text-white px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition shadow-md flex items-center gap-1.5">
-                    <i class="fa-solid fa-folder-open"></i>
-                    <span>File Helper Guide</span>
-                </button>
-            </div>
-        </div>
+  <div class="lace-header"></div>
+
+  <div class="container">
+    
+    <!-- Hero Banner -->
+    <header class="hero-section">
+      <div class="hero-ribbon">✨ Happy 13th Birthday ✨</div>
+      <h1 class="hero-title">Hanvitha</h1>
+      <div class="bow-badge">🎀</div>
+      <p class="hero-subtitle">WELCOME TO THE TEEN CLUB! 💕</p>
     </header>
 
-    <section class="max-w-4xl mx-auto px-4 pt-10 pb-6 text-center relative">
-        <div class="inline-block relative mb-3">
-            <span class="text-5xl sm:text-6xl animate-bounce inline-block">🎀</span>
-            <div class="absolute -top-2 -right-6 bg-pink-100 text-pink-700 text-xs px-2.5 py-0.5 rounded-full border border-pink-300 shadow-sm font-script text-base">
-                Official Teenager! ✨
-            </div>
-        </div>
-
-        <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-pink-700 mb-2 tracking-tight">
-            Happy 13th Birthday
-        </h1>
-        <h2 class="font-cursive text-5xl sm:text-7xl text-pink-500 font-normal drop-shadow-sm mb-4">
-            Hanvitha! 💕
-        </h2>
-
-        <p class="text-pink-800 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed mb-6">
-            welcome to chapter 13 hanvii <3
-        </p>
-
-        <!-- Custom Audio Player Section -->
-        <div class="max-w-md mx-auto glass-card rounded-2xl p-4 border border-pink-300 shadow-md mb-6">
-            <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2">
-                    <span class="text-pink-500 text-lg">🎵</span>
-                    <span id="song-title" class="text-xs font-semibold text-pink-800 truncate max-w-[200px]">music.mp3</span>
-                </div>
-               
-
-            <audio id="bg-audio" preload="metadata" src="music.mp3"></audio>
-
-            <div class="flex items-center gap-3">
-                <button id="play-pause-btn" onclick="toggleAudioPlay()" class="w-9 h-9 rounded-full bg-pink-500 hover:bg-pink-600 text-white flex items-center justify-center shadow transition shrink-0">
-                    <i class="fa-solid fa-play" id="play-icon"></i>
-                </button>
-
-                <div class="flex-grow flex items-center gap-2">
-                    <span id="current-time" class="text-[10px] text-pink-600 font-mono">0:00</span>
-                    <input type="range" id="seek-bar" value="0" min="0" max="100" class="w-full h-1.5 bg-pink-200 rounded-lg appearance-none cursor-pointer accent-pink-500">
-                    <span id="duration-time" class="text-[10px] text-pink-600 font-mono">0:00</span>
-                </div>
-
-                <div class="flex items-center gap-1 shrink-0">
-                    <i class="fa-solid fa-volume-high text-pink-400 text-xs"></i>
-                    <input type="range" id="volume-bar" value="100" min="0" max="100" class="w-12 h-1.5 bg-pink-200 rounded-lg appearance-none cursor-pointer accent-pink-500">
-                </div>
-            </div>
-            <p id="audio-status" class="text-[10px] text-pink-500 mt-1 text-center"> <code class="bg-pink-100 px-1 rounded"></code></p>
-        </div>
-    </section>
-
-    <section class="max-w-3xl mx-auto px-4 my-6">
-        <div class="glass-card rounded-3xl p-6 sm:p-8 text-center coquette-border relative overflow-hidden">
-            <div class="absolute top-3 left-4 text-2xl">🎀</div>
-            <div class="absolute top-3 right-4 text-2xl">🎀</div>
-
-            <h3 class="font-serif-title text-2xl text-pink-800 font-bold mb-1">Make a Wish & Blow out 13 Candles! 🕯️</h3>
-            <p class="text-xs sm:text-sm text-pink-600 mb-6">Click/tap candles to extinguish them or use the blow button!</p>
-
-            <div class="relative w-full max-w-md mx-auto h-60 flex flex-col items-center justify-end mb-6">
-                <!-- 13 Candles Container -->
-                <div id="candles-container" class="flex justify-center items-end gap-1.5 sm:gap-2.5 z-20 mb-[-6px] px-2"></div>
-
-                <div class="w-64 sm:w-80 h-16 bg-pink-200 rounded-t-3xl border-t-4 border-white relative z-10 shadow-inner flex justify-around items-center">
-                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
-                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
-                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
-                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
-                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
-                </div>
-
-                <div class="w-72 sm:w-96 h-20 bg-pink-300 border-t-4 border-pink-100 relative z-0 flex items-center justify-center shadow-md">
-                    <span class="text-white text-lg sm:text-2xl font-serif-title tracking-widest font-bold drop-shadow">HANVITHA ★ 13</span>
-                </div>
-
-                <div class="w-80 sm:w-[420px] h-6 bg-pink-100 rounded-b-2xl border-t-2 border-pink-200 shadow-xl flex justify-center items-center">
-                    <div class="w-full h-1 bg-pink-300/40"></div>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-3">
-                <button onclick="blowAllCandles()" class="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md transition flex items-center gap-2">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    <span>Blow All 13 Candles 🎂</span>
-                </button>
-
-                <button onclick="resetCandles()" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition border border-pink-300">
-                    Relight Candles 🔥
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 pt-10 pb-4 text-center">
-        <div class="inline-flex items-center gap-2 bg-white/80 border border-pink-200 px-4 py-1.5 rounded-full mb-3 shadow-sm">
-            <span>💌</span>
-            <span class="text-xs font-semibold text-pink-600 tracking-wider uppercase">9 Special Video Memories</span>
-        </div>
-        <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-pink-900 mb-2">Video Wishes for Hanvitha</h2>
-        <p class="text-pink-700 text-sm max-w-lg mx-auto">Click any video card below to watch or view in full lightbox popup!</p>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="video-grid"></div>
-    </section>
-
-    <!-- Video & File Helper Setup Modal -->
-    <div id="naming-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 coquette-border shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="toggleModal('naming-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl font-bold w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center">✕</button>
-            
-            <div class="text-center mb-5">
-                <span class="text-4xl">📁</span>
-                <h3 class="font-serif-title text-2xl font-bold text-pink-900 mt-2">File Setup Guide</h3>
-                <p class="text-xs text-pink-600 mt-1">Save these files in the same folder as <code class="bg-pink-100 px-1 rounded text-pink-800">index.html</code></p>
-            </div>
-
-            <div class="space-y-2 text-xs sm:text-sm text-pink-900 bg-pink-50/80 p-4 rounded-2xl border border-pink-200 font-mono">
-                <div class="flex justify-between items-center py-1 border-b border-pink-200 text-pink-700 font-bold">
-                    <span>🎵 music.mp3</span>
-                    <span class="font-sans text-xs bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full">Background Music</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video1.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love amita 🎀</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video2.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love amita 🎀</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video3.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love amita 🎀</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video4.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love the gang 💖</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video5.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love the gang 💖</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video6.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love from abroad ✈️</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video7.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love nesha 💕</span>
-                </div>
-                <div class="flex justify-between items-center py-1 border-b border-pink-200">
-                    <span class="font-bold text-pink-700">video8.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love nesha 💕</span>
-                </div>
-                <div class="flex justify-between items-center py-1">
-                    <span class="font-bold text-pink-700">video9.mp4</span>
-                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love nesha 💕</span>
-                </div>
-            </div>
-
-            <button onclick="toggleModal('naming-modal')" class="w-full mt-5 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-xl transition shadow-md text-sm">
-                Got It! 🎀
-            </button>
-        </div>
+    <!-- Background Music Section -->
+    <div class="audio-card">
+      <div class="audio-title">
+        <span>🎵 Play Birthday Vibes</span>
+      </div>
+      <audio id="bgAudio" controls loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="upload-btn-wrapper">
+        <button class="btn-upload">📎 Choose your custom audio file</button>
+        <input type="file" id="audioUploader" accept="audio/*">
+      </div>
     </div>
 
-    <!-- Secret Birthday Letter Modal -->
-    <div id="letter-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-card rounded-3xl p-8 max-w-lg w-full coquette-border text-center relative max-h-[90vh] overflow-y-auto">
-            <button onclick="toggleModal('letter-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl font-bold w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center">✕</button>
-            <div class="text-4xl mb-2">💌 ✨ 🎀</div>
-            <h3 class="font-serif-title text-3xl text-pink-900 font-bold mb-4">Dear Hanvitha,</h3>
-            <p class="text-pink-800 text-base sm:text-lg leading-relaxed font-light mb-6">
-                Official teenager alert! 🌸 Turning 13 is such a special step into a bright new era. You bring so much sweetness, fun, and light into everyone's lives. May your 13th year bring endless unforgettable moments, incredible laughs, and all the happiness in the world!
-            </p>
-            <div class="font-cursive text-4xl text-pink-600 font-semibold">
-                Happy Birthday Bestie! 💕
-            </div>
+    <!-- Video Gallery Grid (9 Custom Polaroid Videos) -->
+    <h2 class="gallery-title">Memories & Video Wishes</h2>
+    
+    <div class="video-grid">
+
+      <!-- Video Card 1 -->
+      <div class="polaroid-card" onclick="openModal('video1.mp4', 'love amita 🎀')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video1.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
         </div>
+        <div class="polaroid-caption">love amita 🎀</div>
+        <div class="polaroid-tag">Memory #01</div>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="polaroid-card" onclick="openModal('video2.mp4', 'love amita 🎀')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video2.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love amita 🎀</div>
+        <div class="polaroid-tag">Memory #02</div>
+      </div>
+
+      <!-- Video Card 3 -->
+      <div class="polaroid-card" onclick="openModal('video3.mp4', 'love amita 🎀')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video3.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love amita 🎀</div>
+        <div class="polaroid-tag">Memory #03</div>
+      </div>
+
+      <!-- Video Card 4 -->
+      <div class="polaroid-card" onclick="openModal('video4.mp4', 'love the gang 💖')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video4.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love the gang 💖</div>
+        <div class="polaroid-tag">Memory #04</div>
+      </div>
+
+      <!-- Video Card 5 -->
+      <div class="polaroid-card" onclick="openModal('video5.mp4', 'love the gang 💖')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video5.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love the gang 💖</div>
+        <div class="polaroid-tag">Memory #05</div>
+      </div>
+
+      <!-- Video Card 6 -->
+      <div class="polaroid-card" onclick="openModal('video6.mp4', 'love from abroad ✈️')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video6.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love from abroad ✈️</div>
+        <div class="polaroid-tag">Memory #06</div>
+      </div>
+
+      <!-- Video Card 7 -->
+      <div class="polaroid-card" onclick="openModal('video7.mp4', 'love nesha 💕')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video7.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love nesha 💕</div>
+        <div class="polaroid-tag">Memory #07</div>
+      </div>
+
+      <!-- Video Card 8 -->
+      <div class="polaroid-card" onclick="openModal('video8.mp4', 'love nesha 💕')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video8.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love nesha 💕</div>
+        <div class="polaroid-tag">Memory #08</div>
+      </div>
+
+      <!-- Video Card 9 -->
+      <div class="polaroid-card" onclick="openModal('video9.mp4', 'love nesha 💕')">
+        <div class="washi-tape"></div>
+        <div class="video-frame">
+          <video src="video9.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        </div>
+        <div class="polaroid-caption">love nesha 💕</div>
+        <div class="polaroid-tag">Memory #09</div>
+      </div>
+
     </div>
 
-    <!-- Video Lightbox Popup Modal -->
-    <div id="lightbox-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-pink-300">
-            <button onclick="closeLightbox()" class="absolute top-3 right-3 text-white bg-pink-600/80 hover:bg-pink-600 w-10 h-10 rounded-full flex items-center justify-center z-10 text-lg transition">
-                ✕
-            </button>
-            <div id="lightbox-content" class="w-full aspect-video flex items-center justify-center"></div>
-            <div id="lightbox-caption" class="p-4 bg-pink-950 text-pink-200 font-serif-title text-center text-xl"></div>
+    <!-- Virtual 13th Birthday Cake with Candles -->
+    <section class="cake-section">
+      <h3 class="cake-title">Make a Wish, Hanvitha! 🎂</h3>
+      <p class="cake-instructions">Click the candles to blow them out, or click the button below!</p>
+      
+      <div class="cake-container">
+        <div class="candles-row" id="candlesRow">
+          <!-- 13 Candles Generated by JavaScript -->
         </div>
-    </div>
+        <div class="cake-body">
+          <div class="cake-icing"></div>
+        </div>
+      </div>
 
-    <footer class="mt-12 text-center text-pink-600 text-xs sm:text-sm">
-        <p class="flex items-center justify-center gap-1">
-            Made with <span class="text-red-400">💖</span> for Hanvitha's 13th Birthday • Coquette Era 🎀
-        </p>
+      <button class="btn-blow" onclick="blowAllCandles()">💨 Blow Out All 13 Candles!</button>
+    </section>
+
+    <footer>
+      Crafted with 💕 for Hanvitha's 13th Birthday ✨
     </footer>
 
-    <script>
-        // 9 Videos Data
-        const videoData = [
-            { id: 1, file: 'video1.mp4', signoff: 'love amita 🎀' },
-            { id: 2, file: 'video2.mp4', signoff: 'love amita 🎀' },
-            { id: 3, file: 'video3.mp4', signoff: 'love amita 🎀' },
-            { id: 4, file: 'video4.mp4', signoff: 'love the gang 💖' },
-            { id: 5, file: 'video5.mp4', signoff: 'love the gang 💖' },
-            { id: 6, file: 'video6.mp4', signoff: 'love from abroad ✈️' },
-            { id: 7, file: 'video7.mp4', signoff: 'love nesha 💕' },
-            { id: 8, file: 'video8.mp4', signoff: 'love nesha 💕' },
-            { id: 9, file: 'video9.mp4', signoff: 'love nesha 💕' }
-        ];
+  </div>
 
-        function renderVideoGrid() {
-            const grid = document.getElementById('video-grid');
-            grid.innerHTML = '';
+  <!-- Video Modal -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="modal-card">
+      <div class="modal-close" onclick="closeModal()">✕</div>
+      <div class="modal-video-container">
+        <video id="modalVideoPlayer" controls playsinline></video>
+      </div>
+      <div class="modal-caption" id="modalVideoCaption"></div>
+    </div>
+  </div>
 
-            videoData.forEach(vid => {
-                const card = document.createElement('div');
-                card.className = "glass-card rounded-2xl p-4 coquette-border relative flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-xl";
+  <script>
+    // Create 13 Candles for Hanvitha
+    const candlesRow = document.getElementById('candlesRow');
+    let candlesExtinguished = 0;
 
-                card.innerHTML = `
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-0.5 rounded-full border border-pink-300 text-xs text-pink-600 shadow-sm z-10 flex items-center gap-1 font-semibold">
-                        <span>🎀</span> Video ${vid.id}
-                    </div>
-
-                    <div class="relative w-full aspect-video bg-pink-100/60 rounded-xl overflow-hidden mt-2 mb-3 border border-pink-200 group flex items-center justify-center">
-                        <video id="vid-element-${vid.id}" class="w-full h-full object-cover hidden" controls preload="metadata">
-                            <source src="${vid.file}" type="video/mp4">
-                        </video>
-
-                        <div id="vid-fallback-${vid.id}" class="w-full h-full p-4 flex flex-col items-center justify-center text-center bg-gradient-to-br from-pink-50 to-pink-100 border border-dashed border-pink-300 rounded-xl">
-                            <div class="w-12 h-12 rounded-full bg-pink-200/80 flex items-center justify-center text-pink-600 text-xl mb-2 group-hover:scale-110 transition">
-                                <i class="fa-solid fa-film"></i>
-                            </div>
-                            <p class="text-xs font-bold text-pink-800 mb-0.5">${vid.file}</p>
-                            <p class="text-[11px] text-pink-600 max-w-[180px]">Place <code class="bg-white px-1 rounded">${vid.file}</code> in folder</p>
-                        </div>
-                    </div>
-
-                    <div class="text-center pt-2 border-t border-pink-100 flex items-center justify-between">
-                        <span class="font-script text-xl sm:text-2xl text-pink-700 font-bold tracking-wide">
-                            ${vid.signoff}
-                        </span>
-                        <button onclick="openLightbox(${vid.id})" class="text-pink-500 hover:text-pink-700 bg-pink-50 hover:bg-pink-100 p-2 rounded-full text-xs transition border border-pink-200" title="Expand Fullscreen">
-                            <i class="fa-solid fa-expand"></i>
-                        </button>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-
-                const videoElem = document.getElementById(`vid-element-${vid.id}`);
-                const fallbackElem = document.getElementById(`vid-fallback-${vid.id}`);
-
-                videoElem.oncanplay = function() {
-                    videoElem.classList.remove('hidden');
-                    fallbackElem.classList.add('hidden');
-                };
-
-                videoElem.onerror = function() {
-                    videoElem.classList.add('hidden');
-                    fallbackElem.classList.remove('hidden');
-                };
-            });
+    for (let i = 0; i < 13; i++) {
+      const candle = document.createElement('div');
+      candle.className = 'candle';
+      candle.innerHTML = '<div class="flame"></div><div class="smoke"></div>';
+      candle.onclick = function() {
+        if (!this.classList.contains('extinguished')) {
+          this.classList.add('extinguished');
+          candlesExtinguished++;
+          checkCandles();
         }
+      };
+      candlesRow.appendChild(candle);
+    }
 
-        // Lightbox Functions
-        function openLightbox(id) {
-            const vidObj = videoData.find(v => v.id === id);
-            if (!vidObj) return;
+    function blowAllCandles() {
+      const candles = document.querySelectorAll('.candle');
+      candles.forEach(c => c.classList.add('extinguished'));
+      candlesExtinguished = 13;
+      checkCandles();
+    }
 
-            const modal = document.getElementById('lightbox-modal');
-            const content = document.getElementById('lightbox-content');
-            const caption = document.getElementById('lightbox-caption');
-
-            content.innerHTML = `
-                <video class="w-full h-full max-h-[75vh] rounded-lg" controls autoplay>
-                    <source src="${vidObj.file}" type="video/mp4">
-                    Video element unavailable.
-                </video>
-            `;
-            caption.innerHTML = `${vidObj.signoff} 🎀`;
-            modal.classList.remove('hidden');
-        }
-
-        function closeLightbox() {
-            const modal = document.getElementById('lightbox-modal');
-            const content = document.getElementById('lightbox-content');
-            content.innerHTML = '';
-            modal.classList.add('hidden');
-        }
-
-        // Candle Blowing Mechanics
-        let blownCount = 0;
-
-        function initCandles() {
-            const container = document.getElementById('candles-container');
-            container.innerHTML = '';
-            blownCount = 0;
-
-            for (let i = 1; i <= 13; i++) {
-                const candle = document.createElement('div');
-                candle.className = 'candle';
-                candle.id = `candle-${i}`;
-                candle.innerHTML = `<div class="flame"></div>`;
-                candle.onclick = () => blowCandle(candle);
-                container.appendChild(candle);
-            }
-        }
-
-        function blowCandle(candleElem) {
-            if (!candleElem.classList.contains('blown')) {
-                candleElem.classList.add('blown');
-                blownCount++;
-                if (blownCount === 13) {
-                    triggerConfetti();
-                }
-            }
-        }
-
-        function blowAllCandles() {
-            for (let i = 1; i <= 13; i++) {
-                const c = document.getElementById(`candle-${i}`);
-                if (c && !c.classList.contains('blown')) {
-                    c.classList.add('blown');
-                }
-            }
-            blownCount = 13;
-            triggerConfetti();
-        }
-
-        function resetCandles() {
-            initCandles();
-        }
-
-        function triggerConfetti() {
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 120,
-                    spread: 80,
-                    origin: { y: 0.6 },
-                    colors: ['#f472b6', '#fbcfe8', '#ffffff', '#fb7185', '#f43f5e']
-                });
-            }
-        }
-
-        // Custom Audio Player Setup
-        const audio = document.getElementById('bg-audio');
-        const playBtn = document.getElementById('play-pause-btn');
-        const playIcon = document.getElementById('play-icon');
-        const seekBar = document.getElementById('seek-bar');
-        const volumeBar = document.getElementById('volume-bar');
-        const currentTimeElem = document.getElementById('current-time');
-        const durationTimeElem = document.getElementById('duration-time');
-        const audioFileInput = document.getElementById('audio-file-input');
-        const songTitleElem = document.getElementById('song-title');
-        const audioStatus = document.getElementById('audio-status');
-
-        function formatTime(secs) {
-            const m = Math.floor(secs / 60);
-            const s = Math.floor(secs % 60);
-            return `${m}:${s < 10 ? '0' : ''}${s}`;
-        }
-
-        function toggleAudioPlay() {
-            if (audio.paused) {
-                audio.play().then(() => {
-                    playIcon.className = "fa-solid fa-pause";
-                }).catch(err => {
-                    audioStatus.innerText = "Error playing audio file. Please upload an audio file above!";
-                });
-            } else {
-                audio.pause();
-                playIcon.className = "fa-solid fa-play";
-            }
-        }
-
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const pct = (audio.currentTime / audio.duration) * 100;
-                seekBar.value = pct;
-                currentTimeElem.innerText = formatTime(audio.currentTime);
-                durationTimeElem.innerText = formatTime(audio.duration);
-            }
+    function checkCandles() {
+      if (candlesExtinguished >= 13) {
+        confetti({
+          particleCount: 120,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ['#f472b6', '#fbcfe8', '#db2777', '#ffffff']
         });
+      }
+    }
 
-        seekBar.addEventListener('input', () => {
-            if (audio.duration) {
-                audio.currentTime = (seekBar.value / 100) * audio.duration;
-            }
-        });
+    // Modal Functions
+    function openModal(videoSrc, caption) {
+      const modal = document.getElementById('videoModal');
+      const player = document.getElementById('modalVideoPlayer');
+      const captionElem = document.getElementById('modalVideoCaption');
 
-        volumeBar.addEventListener('input', () => {
-            audio.volume = volumeBar.value / 100;
-        });
+      player.src = videoSrc;
+      captionElem.innerText = caption;
+      modal.style.display = 'flex';
+      player.play().catch(e => console.log('Autoplay prevented:', e));
+    }
 
-        // Custom Music Upload Listener
-        audioFileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const fileURL = URL.createObjectURL(file);
-                audio.src = fileURL;
-                songTitleElem.innerText = file.name;
-                audioStatus.innerText = "Custom audio track loaded! Press play 🎵";
-                audio.play();
-                playIcon.className = "fa-solid fa-pause";
-            }
-        });
+    function closeModal() {
+      const modal = document.getElementById('videoModal');
+      const player = document.getElementById('modalVideoPlayer');
+      player.pause();
+      player.src = '';
+      modal.style.display = 'none';
+    }
 
-        // Floating Bows & Sparkles Particles
-        function createFloatingElements() {
-            const container = document.getElementById('floating-container');
-            const icons = ['🎀', '✨', '💕', '🌸', '🕊️', '💖', '⭐'];
+    // Audio Uploader
+    document.getElementById('audioUploader').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const audioPlayer = document.getElementById('bgAudio');
+        audioPlayer.src = URL.createObjectURL(file);
+        audioPlayer.play();
+      }
+    });
 
-            for (let i = 0; i < 20; i++) {
-                const el = document.createElement('div');
-                el.className = 'floating-element';
-                el.innerText = icons[Math.floor(Math.random() * icons.length)];
-                el.style.left = `${Math.random() * 95}vw`;
-                el.style.animationDuration = `${6 + Math.random() * 8}s`;
-                el.style.animationDelay = `${Math.random() * 5}s`;
-                el.style.fontSize = `${16 + Math.random() * 20}px`;
-                container.appendChild(el);
-            }
-        }
+    // Floating Background Generator
+    const items = ['🎀', '✨', '🌸', '💖', '🍓', '💫'];
+    const container = document.getElementById('floatingContainer');
 
-        function toggleModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.toggle('hidden');
-            }
-        }
-
-        window.onload = function() {
-            initCandles();
-            renderVideoGrid();
-            createFloatingElements();
-        };
-    </script>
+    for (let i = 0; i < 20; i++) {
+      const div = document.createElement('div');
+      div.className = 'floating-item';
+      div.innerText = items[Math.floor(Math.random() * items.length)];
+      div.style.left = Math.random() * 100 + 'vw';
+      div.style.animationDelay = (Math.random() * 10) + 's';
+      div.style.animationDuration = (8 + Math.random() * 8) + 's';
+      container.appendChild(div);
+    }
+  </script>
 </body>
 </html>
