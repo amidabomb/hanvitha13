@@ -163,12 +163,7 @@
                     <span class="text-pink-500 text-lg">🎵</span>
                     <span id="song-title" class="text-xs font-semibold text-pink-800 truncate max-w-[200px]">music.mp3</span>
                 </div>
-                <!-- File Input for custom music upload -->
-                <label class="cursor-pointer bg-pink-100 hover:bg-pink-200 text-pink-700 border border-pink-300 text-[11px] px-2.5 py-1 rounded-full font-medium transition flex items-center gap-1">
-                    <i class="fa-solid fa-upload"></i> Upload Music File
-                    <input type="file" id="audio-file-input" accept="audio/*" class="hidden">
-                </label>
-            </div>
+               
 
             <audio id="bg-audio" preload="metadata" src="music.mp3"></audio>
 
@@ -188,7 +183,7 @@
                     <input type="range" id="volume-bar" value="100" min="0" max="100" class="w-12 h-1.5 bg-pink-200 rounded-lg appearance-none cursor-pointer accent-pink-500">
                 </div>
             </div>
-            <p id="audio-status" class="text-[10px] text-pink-500 mt-1 text-center">Tip: Select any song file or save your music as <code class="bg-pink-100 px-1 rounded">music.mp3</code></p>
+            <p id="audio-status" class="text-[10px] text-pink-500 mt-1 text-center"> <code class="bg-pink-100 px-1 rounded"></code></p>
         </div>
     </section>
 
