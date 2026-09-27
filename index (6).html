@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 13th Birthday Hanvitha! 🎀✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fff0f5;
+            background-image: 
+                radial-gradient(#fbcfe8 1.5px, transparent 1.5px), 
+                radial-gradient(#fbcfe8 1.5px, #fff0f5 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            overflow-x: hidden;
+            color: #4a2c3d;
+        }
+
+        .font-serif-title { font-family: 'Playfair Display', serif; }
+        .font-cursive { font-family: 'Great Vibes', cursive; }
+        .font-script { font-family: 'Dancing Script', cursive; }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #fdf2f8; }
+        ::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 10px; border: 2px solid #fdf2f8; }
+
+        .floating-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; }
+            90% { opacity: 0.9; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .flame {
+            width: 12px;
+            height: 20px;
+            background: linear-gradient(to bottom, #fffae6 0%, #ffaa00 50%, #ff3300 100%);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px #ffaa00, 0 0 20px #ffaa00;
+            animation: flicker 0.6s infinite alternate;
+            transform-origin: center bottom;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+            100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+        }
+
+        .candle {
+            width: 14px;
+            height: 48px;
+            background: linear-gradient(to right, #fbcfe8, #f472b6, #fbcfe8);
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(219, 39, 119, 0.2);
+        }
+
+        .candle.blown .flame {
+            display: none;
+        }
+
+        .candle.blown::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 12px;
+            background: rgba(150, 150, 150, 0.5);
+            border-radius: 50%;
+            animation: smoke 1.5s ease-out forwards;
+        }
+
+        @keyframes smoke {
+            0% { opacity: 0.8; transform: translateX(-50%) translateY(0) scaleX(1); }
+            100% { opacity: 0; transform: translateX(-100%) translateY(-20px) scaleX(3); }
+        }
+
+        .coquette-border {
+            border: 3px solid #f472b6;
+            outline: 2px dashed #fbcfe8;
+            outline-offset: -8px;
+            box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.2), 0 8px 10px -6px rgba(244, 114, 182, 0.1);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 207, 232, 0.8);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative pb-16">
+
+    <!-- Floating Background Particles -->
+    <div id="floating-container"></div>
+
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-pink-200 px-4 py-3 shadow-sm">
+        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl animate-pulse">🎀</span>
+                <span class="font-serif-title font-bold text-xl text-pink-600 tracking-wide">Hanvitha's 13th</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleModal('letter-modal')" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition border border-pink-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <span>Secret Letter</span>
+                </button>
+                <button onclick="toggleModal('naming-modal')" class="bg-pink-500 hover:bg-pink-600 text-white px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition shadow-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>File Helper Guide</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-4 pt-10 pb-6 text-center relative">
+        <div class="inline-block relative mb-3">
+            <span class="text-5xl sm:text-6xl animate-bounce inline-block">🎀</span>
+            <div class="absolute -top-2 -right-6 bg-pink-100 text-pink-700 text-xs px-2.5 py-0.5 rounded-full border border-pink-300 shadow-sm font-script text-base">
+                Official Teenager! ✨
+            </div>
+        </div>
+
+        <h1 class="font-serif-title text-4xl sm:text-6xl font-bold text-pink-700 mb-2 tracking-tight">
+            Happy 13th Birthday
+        </h1>
+        <h2 class="font-cursive text-5xl sm:text-7xl text-pink-500 font-normal drop-shadow-sm mb-4">
+            Hanvitha! 💕
+        </h2>
+
+        <p class="text-pink-800 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed mb-6">
+            Welcome to Chapter 13! May your year be filled with pink ribbons, infinite laughs, soft aesthetics, and pure happiness!
+        </p>
+
+        <!-- Custom Audio Player Section -->
+        <div class="max-w-md mx-auto glass-card rounded-2xl p-4 border border-pink-300 shadow-md mb-6">
+            <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-pink-500 text-lg">🎵</span>
+                    <span id="song-title" class="text-xs font-semibold text-pink-800 truncate max-w-[200px]">music.mp3</span>
+                </div>
+                <!-- File Input for custom music upload -->
+                <label class="cursor-pointer bg-pink-100 hover:bg-pink-200 text-pink-700 border border-pink-300 text-[11px] px-2.5 py-1 rounded-full font-medium transition flex items-center gap-1">
+                    <i class="fa-solid fa-upload"></i> Upload Music File
+                    <input type="file" id="audio-file-input" accept="audio/*" class="hidden">
+                </label>
+            </div>
+
+            <audio id="bg-audio" preload="metadata" src="music.mp3"></audio>
+
+            <div class="flex items-center gap-3">
+                <button id="play-pause-btn" onclick="toggleAudioPlay()" class="w-9 h-9 rounded-full bg-pink-500 hover:bg-pink-600 text-white flex items-center justify-center shadow transition shrink-0">
+                    <i class="fa-solid fa-play" id="play-icon"></i>
+                </button>
+
+                <div class="flex-grow flex items-center gap-2">
+                    <span id="current-time" class="text-[10px] text-pink-600 font-mono">0:00</span>
+                    <input type="range" id="seek-bar" value="0" min="0" max="100" class="w-full h-1.5 bg-pink-200 rounded-lg appearance-none cursor-pointer accent-pink-500">
+                    <span id="duration-time" class="text-[10px] text-pink-600 font-mono">0:00</span>
+                </div>
+
+                <div class="flex items-center gap-1 shrink-0">
+                    <i class="fa-solid fa-volume-high text-pink-400 text-xs"></i>
+                    <input type="range" id="volume-bar" value="100" min="0" max="100" class="w-12 h-1.5 bg-pink-200 rounded-lg appearance-none cursor-pointer accent-pink-500">
+                </div>
+            </div>
+            <p id="audio-status" class="text-[10px] text-pink-500 mt-1 text-center">Tip: Select any song file or save your music as <code class="bg-pink-100 px-1 rounded">music.mp3</code></p>
+        </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-4 my-6">
+        <div class="glass-card rounded-3xl p-6 sm:p-8 text-center coquette-border relative overflow-hidden">
+            <div class="absolute top-3 left-4 text-2xl">🎀</div>
+            <div class="absolute top-3 right-4 text-2xl">🎀</div>
+
+            <h3 class="font-serif-title text-2xl text-pink-800 font-bold mb-1">Make a Wish & Blow out 13 Candles! 🕯️</h3>
+            <p class="text-xs sm:text-sm text-pink-600 mb-6">Click/tap candles to extinguish them or use the blow button!</p>
+
+            <div class="relative w-full max-w-md mx-auto h-60 flex flex-col items-center justify-end mb-6">
+                <!-- 13 Candles Container -->
+                <div id="candles-container" class="flex justify-center items-end gap-1.5 sm:gap-2.5 z-20 mb-[-6px] px-2"></div>
+
+                <div class="w-64 sm:w-80 h-16 bg-pink-200 rounded-t-3xl border-t-4 border-white relative z-10 shadow-inner flex justify-around items-center">
+                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
+                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
+                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
+                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
+                    <div class="w-5 h-5 bg-white rounded-full -mt-10 shadow-sm"></div>
+                </div>
+
+                <div class="w-72 sm:w-96 h-20 bg-pink-300 border-t-4 border-pink-100 relative z-0 flex items-center justify-center shadow-md">
+                    <span class="text-white text-lg sm:text-2xl font-serif-title tracking-widest font-bold drop-shadow">HANVITHA ★ 13</span>
+                </div>
+
+                <div class="w-80 sm:w-[420px] h-6 bg-pink-100 rounded-b-2xl border-t-2 border-pink-200 shadow-xl flex justify-center items-center">
+                    <div class="w-full h-1 bg-pink-300/40"></div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="blowAllCandles()" class="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Blow All 13 Candles 🎂</span>
+                </button>
+
+                <button onclick="resetCandles()" class="bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition border border-pink-300">
+                    Relight Candles 🔥
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 pt-10 pb-4 text-center">
+        <div class="inline-flex items-center gap-2 bg-white/80 border border-pink-200 px-4 py-1.5 rounded-full mb-3 shadow-sm">
+            <span>💌</span>
+            <span class="text-xs font-semibold text-pink-600 tracking-wider uppercase">9 Special Video Memories</span>
+        </div>
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-pink-900 mb-2">Video Wishes for Hanvitha</h2>
+        <p class="text-pink-700 text-sm max-w-lg mx-auto">Click any video card below to watch or view in full lightbox popup!</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="video-grid"></div>
+    </section>
+
+    <!-- Video & File Helper Setup Modal -->
+    <div id="naming-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 coquette-border shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('naming-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl font-bold w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center">✕</button>
+            
+            <div class="text-center mb-5">
+                <span class="text-4xl">📁</span>
+                <h3 class="font-serif-title text-2xl font-bold text-pink-900 mt-2">File Setup Guide</h3>
+                <p class="text-xs text-pink-600 mt-1">Save these files in the same folder as <code class="bg-pink-100 px-1 rounded text-pink-800">index.html</code></p>
+            </div>
+
+            <div class="space-y-2 text-xs sm:text-sm text-pink-900 bg-pink-50/80 p-4 rounded-2xl border border-pink-200 font-mono">
+                <div class="flex justify-between items-center py-1 border-b border-pink-200 text-pink-700 font-bold">
+                    <span>🎵 music.mp3</span>
+                    <span class="font-sans text-xs bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full">Background Music</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video1.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love amita 🎀</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video2.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love amita 🎀</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video3.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love amita 🎀</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video4.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love the gang 💖</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video5.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love the gang 💖</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video6.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love from abroad ✈️</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video7.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love nesha 💕</span>
+                </div>
+                <div class="flex justify-between items-center py-1 border-b border-pink-200">
+                    <span class="font-bold text-pink-700">video8.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love nesha 💕</span>
+                </div>
+                <div class="flex justify-between items-center py-1">
+                    <span class="font-bold text-pink-700">video9.mp4</span>
+                    <span class="bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-sans text-xs">love nesha 💕</span>
+                </div>
+            </div>
+
+            <button onclick="toggleModal('naming-modal')" class="w-full mt-5 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2.5 rounded-xl transition shadow-md text-sm">
+                Got It! 🎀
+            </button>
+        </div>
+    </div>
+
+    <!-- Secret Birthday Letter Modal -->
+    <div id="letter-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card rounded-3xl p-8 max-w-lg w-full coquette-border text-center relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('letter-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl font-bold w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center">✕</button>
+            <div class="text-4xl mb-2">💌 ✨ 🎀</div>
+            <h3 class="font-serif-title text-3xl text-pink-900 font-bold mb-4">Dear Hanvitha,</h3>
+            <p class="text-pink-800 text-base sm:text-lg leading-relaxed font-light mb-6">
+                Official teenager alert! 🌸 Turning 13 is such a special step into a bright new era. You bring so much sweetness, fun, and light into everyone's lives. May your 13th year bring endless unforgettable moments, incredible laughs, and all the happiness in the world!
+            </p>
+            <div class="font-cursive text-4xl text-pink-600 font-semibold">
+                Happy Birthday Bestie! 💕
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Lightbox Popup Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-pink-300">
+            <button onclick="closeLightbox()" class="absolute top-3 right-3 text-white bg-pink-600/80 hover:bg-pink-600 w-10 h-10 rounded-full flex items-center justify-center z-10 text-lg transition">
+                ✕
+            </button>
+            <div id="lightbox-content" class="w-full aspect-video flex items-center justify-center"></div>
+            <div id="lightbox-caption" class="p-4 bg-pink-950 text-pink-200 font-serif-title text-center text-xl"></div>
+        </div>
+    </div>
+
+    <footer class="mt-12 text-center text-pink-600 text-xs sm:text-sm">
+        <p class="flex items-center justify-center gap-1">
+            Made with <span class="text-red-400">💖</span> for Hanvitha's 13th Birthday • Coquette Era 🎀
+        </p>
+    </footer>
+
+    <script>
+        // 9 Videos Data
+        const videoData = [
+            { id: 1, file: 'video1.mp4', signoff: 'love amita 🎀' },
+            { id: 2, file: 'video2.mp4', signoff: 'love amita 🎀' },
+            { id: 3, file: 'video3.mp4', signoff: 'love amita 🎀' },
+            { id: 4, file: 'video4.mp4', signoff: 'love the gang 💖' },
+            { id: 5, file: 'video5.mp4', signoff: 'love the gang 💖' },
+            { id: 6, file: 'video6.mp4', signoff: 'love from abroad ✈️' },
+            { id: 7, file: 'video7.mp4', signoff: 'love nesha 💕' },
+            { id: 8, file: 'video8.mp4', signoff: 'love nesha 💕' },
+            { id: 9, file: 'video9.mp4', signoff: 'love nesha 💕' }
+        ];
+
+        function renderVideoGrid() {
+            const grid = document.getElementById('video-grid');
+            grid.innerHTML = '';
+
+            videoData.forEach(vid => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-4 coquette-border relative flex flex-col justify-between transition transform hover:-translate-y-1 hover:shadow-xl";
+
+                card.innerHTML = `
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-3 py-0.5 rounded-full border border-pink-300 text-xs text-pink-600 shadow-sm z-10 flex items-center gap-1 font-semibold">
+                        <span>🎀</span> Video ${vid.id}
+                    </div>
+
+                    <div class="relative w-full aspect-video bg-pink-100/60 rounded-xl overflow-hidden mt-2 mb-3 border border-pink-200 group flex items-center justify-center">
+                        <video id="vid-element-${vid.id}" class="w-full h-full object-cover hidden" controls preload="metadata">
+                            <source src="${vid.file}" type="video/mp4">
+                        </video>
+
+                        <div id="vid-fallback-${vid.id}" class="w-full h-full p-4 flex flex-col items-center justify-center text-center bg-gradient-to-br from-pink-50 to-pink-100 border border-dashed border-pink-300 rounded-xl">
+                            <div class="w-12 h-12 rounded-full bg-pink-200/80 flex items-center justify-center text-pink-600 text-xl mb-2 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-film"></i>
+                            </div>
+                            <p class="text-xs font-bold text-pink-800 mb-0.5">${vid.file}</p>
+                            <p class="text-[11px] text-pink-600 max-w-[180px]">Place <code class="bg-white px-1 rounded">${vid.file}</code> in folder</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-2 border-t border-pink-100 flex items-center justify-between">
+                        <span class="font-script text-xl sm:text-2xl text-pink-700 font-bold tracking-wide">
+                            ${vid.signoff}
+                        </span>
+                        <button onclick="openLightbox(${vid.id})" class="text-pink-500 hover:text-pink-700 bg-pink-50 hover:bg-pink-100 p-2 rounded-full text-xs transition border border-pink-200" title="Expand Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+
+                const videoElem = document.getElementById(`vid-element-${vid.id}`);
+                const fallbackElem = document.getElementById(`vid-fallback-${vid.id}`);
+
+                videoElem.oncanplay = function() {
+                    videoElem.classList.remove('hidden');
+                    fallbackElem.classList.add('hidden');
+                };
+
+                videoElem.onerror = function() {
+                    videoElem.classList.add('hidden');
+                    fallbackElem.classList.remove('hidden');
+                };
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(id) {
+            const vidObj = videoData.find(v => v.id === id);
+            if (!vidObj) return;
+
+            const modal = document.getElementById('lightbox-modal');
+            const content = document.getElementById('lightbox-content');
+            const caption = document.getElementById('lightbox-caption');
+
+            content.innerHTML = `
+                <video class="w-full h-full max-h-[75vh] rounded-lg" controls autoplay>
+                    <source src="${vidObj.file}" type="video/mp4">
+                    Video element unavailable.
+                </video>
+            `;
+            caption.innerHTML = `${vidObj.signoff} 🎀`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            const content = document.getElementById('lightbox-content');
+            content.innerHTML = '';
+            modal.classList.add('hidden');
+        }
+
+        // Candle Blowing Mechanics
+        let blownCount = 0;
+
+        function initCandles() {
+            const container = document.getElementById('candles-container');
+            container.innerHTML = '';
+            blownCount = 0;
+
+            for (let i = 1; i <= 13; i++) {
+                const candle = document.createElement('div');
+                candle.className = 'candle';
+                candle.id = `candle-${i}`;
+                candle.innerHTML = `<div class="flame"></div>`;
+                candle.onclick = () => blowCandle(candle);
+                container.appendChild(candle);
+            }
+        }
+
+        function blowCandle(candleElem) {
+            if (!candleElem.classList.contains('blown')) {
+                candleElem.classList.add('blown');
+                blownCount++;
+                if (blownCount === 13) {
+                    triggerConfetti();
+                }
+            }
+        }
+
+        function blowAllCandles() {
+            for (let i = 1; i <= 13; i++) {
+                const c = document.getElementById(`candle-${i}`);
+                if (c && !c.classList.contains('blown')) {
+                    c.classList.add('blown');
+                }
+            }
+            blownCount = 13;
+            triggerConfetti();
+        }
+
+        function resetCandles() {
+            initCandles();
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 120,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ['#f472b6', '#fbcfe8', '#ffffff', '#fb7185', '#f43f5e']
+                });
+            }
+        }
+
+        // Custom Audio Player Setup
+        const audio = document.getElementById('bg-audio');
+        const playBtn = document.getElementById('play-pause-btn');
+        const playIcon = document.getElementById('play-icon');
+        const seekBar = document.getElementById('seek-bar');
+        const volumeBar = document.getElementById('volume-bar');
+        const currentTimeElem = document.getElementById('current-time');
+        const durationTimeElem = document.getElementById('duration-time');
+        const audioFileInput = document.getElementById('audio-file-input');
+        const songTitleElem = document.getElementById('song-title');
+        const audioStatus = document.getElementById('audio-status');
+
+        function formatTime(secs) {
+            const m = Math.floor(secs / 60);
+            const s = Math.floor(secs % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        function toggleAudioPlay() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playIcon.className = "fa-solid fa-pause";
+                }).catch(err => {
+                    audioStatus.innerText = "Error playing audio file. Please upload an audio file above!";
+                });
+            } else {
+                audio.pause();
+                playIcon.className = "fa-solid fa-play";
+            }
+        }
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                seekBar.value = pct;
+                currentTimeElem.innerText = formatTime(audio.currentTime);
+                durationTimeElem.innerText = formatTime(audio.duration);
+            }
+        });
+
+        seekBar.addEventListener('input', () => {
+            if (audio.duration) {
+                audio.currentTime = (seekBar.value / 100) * audio.duration;
+            }
+        });
+
+        volumeBar.addEventListener('input', () => {
+            audio.volume = volumeBar.value / 100;
+        });
+
+        // Custom Music Upload Listener
+        audioFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                audio.src = fileURL;
+                songTitleElem.innerText = file.name;
+                audioStatus.innerText = "Custom audio track loaded! Press play 🎵";
+                audio.play();
+                playIcon.className = "fa-solid fa-pause";
+            }
+        });
+
+        // Floating Bows & Sparkles Particles
+        function createFloatingElements() {
+            const container = document.getElementById('floating-container');
+            const icons = ['🎀', '✨', '💕', '🌸', '🕊️', '💖', '⭐'];
+
+            for (let i = 0; i < 20; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-element';
+                el.innerText = icons[Math.floor(Math.random() * icons.length)];
+                el.style.left = `${Math.random() * 95}vw`;
+                el.style.animationDuration = `${6 + Math.random() * 8}s`;
+                el.style.animationDelay = `${Math.random() * 5}s`;
+                el.style.fontSize = `${16 + Math.random() * 20}px`;
+                container.appendChild(el);
+            }
+        }
+
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        }
+
+        window.onload = function() {
+            initCandles();
+            renderVideoGrid();
+            createFloatingElements();
+        };
+    </script>
+</body>
+</html>
